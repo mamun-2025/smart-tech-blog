@@ -1,0 +1,82 @@
+
+
+{% extends 'base.html' %} 
+
+{% block title %} My Profile - Smart Tech Blog {% endblock %}
+
+{% block content %} 
+<div class="container mt-5">
+   <div class="row">
+      <div class="col-md-4">
+         <div class="card shadow-sm border-0 text-center p-4">
+            <div class="profile-img-container mb-3">
+               <img src="{{ user.profile.profile_pic.url }}"
+                    alt="{{ user.username }}'s profile picture"
+                    class="rounded-circle img-thumbnail"
+                    style="width: 150px; height: 150px; object-fit: cover;">
+            </div>
+            <h4 class="fw-bold">{{ user.username }}</h4>
+            <p class="text-muted small">{{ user.email }}</p>
+            <hr>
+            <div class="text-start">
+               <h6><strong>BIO:</strong></h6>
+               <p class="small text-secondary">
+                  {{ user.profile.bio|default:"No bio added yet." }}</p>
+            </div>
+         </div>
+      </div>
+      <div class="col-md-8">
+         <div class="card shadow-sm border-p p-4">
+            <h3 class="mb-3"> Edit profile information </h3>
+
+            <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+               <div class="mb-4">
+                  <h5 class="text-primary border-bottom pb-2"> Account Settings </h5>
+                  {{ u_form.as_p }} 
+               </div>
+
+               <div class="mb-4">
+                  <h5 class="text-primary border-bottom pb-2"> Personal Details </h5>
+                  {{ p_form.as_p }} 
+               </div>
+
+               <div class="d-grid">
+                  <button type="submit" class="btn btn-success btn-lg">
+                     Update Profile 
+                  </button>
+               </div>
+            </form>
+         </div>
+      </div>
+   </div>
+</div>
+{% endblock %}
+
+
+{% comment %} 
+🧐 টেমপ্লেটটির বিস্তারিত ব্যাখ্যা:
+১. enctype="multipart/form-data" (সবচেয়ে গুরুত্বপূর্ণ)
+যখনই কোনো ফর্মে ছবি বা ফাইল আপলোডের ইনপুট থাকে, 
+তখন HTML ফর্ম ট্যাগে এই অ্যাট্রিবিউটটি ব্যবহার করা বাধ্যতামূলক। 
+এটি ছাড়া ব্রাউজার সার্ভারে ইমেজের ডাটা পাঠাতে পারে না, ফলে আপনার request.FILES খালি থাকে।
+
+২. {{ user.profile.profile_pic.url }}
+আমরা এখানে জ্যাঙ্গোর রিলেশনশিপ ব্যবহার করছি। 
+user থেকে তার profile-এ যাচ্ছি, তারপর সেই প্রোফাইলের ছবির url নিচ্ছি। 
+এটি অটোমেটিক আপনার media/profile_pics/ ফোল্ডার থেকে সঠিক লিঙ্কটি তৈরি করে দেয়।
+
+৩. object-fit: cover; (CSS টিপস)
+ইউজার যদি বিভিন্ন সাইজের বা স্কয়ার নয় এমন ছবি আপলোড করে, 
+তবে এই CSS প্রপার্টিটি ছবিটিকে নষ্ট না করে (stretch না করে) ফ্রেমের ভেতরে সুন্দরভাবে বসিয়ে দেয়।
+
+৪. {{ u_form.as_p }} এবং {{ p_form.as_p }}
+আমরা ভিউ (View) থেকে যে দুটি ফর্ম পাঠিয়েছিলাম, 
+সেগুলোকে এখানে প্যারাগ্রাফ আকারে রেন্ডার করছি। 
+জ্যাঙ্গো নিজে থেকেই লেবেল এবং ইনপুট ফিল্ডগুলো তৈরি করে দিচ্ছে। 
+{% endcomment %}
+
+
+
+
+
+

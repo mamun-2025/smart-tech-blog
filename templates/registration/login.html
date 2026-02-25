@@ -1,0 +1,64 @@
+
+{% extends "base.html" %}
+
+{% block title %} Login - Smart Tech Blog {% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-sm border-0 mt-5">
+            <div class="card-body p-5">
+                <h2 class="text-center mb-4">Login</h2>
+                
+                {% if form.errors %}
+                    <div class="alert alert-danger">
+                        Your username and password didn't match. Please try again.
+                    </div>
+                {% endif %}
+
+                <form method="post">
+                    {% csrf_token %}
+                    
+                    <div class="mb-3">
+                        {{ form.username.label_tag }}
+                        <div class="form-control-sm">
+                            {{ form.username }}
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form.password.label_tag }}
+                        <div class="form-control-sm">
+                            {{ form.password }}
+                        </div>
+                    </div>
+
+                    <button class="btn btn-success w-100 mt-3" type="submit">Log In</button>
+                    <input type="hidden" name="next" value="{{ next }}">
+                </form>
+
+                <div class="text-center mt-4">
+                    <p class="mb-0">Don't have an account? 
+                        <a href="{% url 'accounts:signup' %}" class="text-success fw-bold">Sign Up here</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
+{% comment %} 
+🧐 কোডটির গুরুত্বপূর্ণ অংশগুলোর ব্যাখ্যা:
+{% if form.errors %}: যদি ইউজার ভুল পাসওয়ার্ড বা ইউজারনেম দেয়, তবে জ্যাঙ্গো নিজে থেকেই এই এরর মেসেজটি দেখাবে।
+
+{% csrf_token %}: এটি আপনার ফর্মের নিরাপত্তা নিশ্চিত করে। এটি ছাড়া জ্যাঙ্গো কোনো ডাটা সাবমিট করতে দেয় না।
+
+<input type="hidden" name="next" value="{{ next }}">: এটি খুবই দরকারি। 
+ধরুন আপনি একটি ব্লগে কমেন্ট করতে চাইলেন কিন্তু আপনি লগইন করা নেই। 
+তখন সাইট আপনাকে লগইন পেজে পাঠাবে। 
+লগইন করার পর এই next ভ্যারিয়েবলটি আপনাকে সরাসরি আবার সেই আগের কমেন্ট পেজেই ফিরিয়ে নিয়ে যাবে।
+form.username এবং form.password: জ্যাঙ্গো নিজে থেকেই এই ইনপুট ফিল্ডগুলো তৈরি করে দেয়। 
+{% endcomment %}

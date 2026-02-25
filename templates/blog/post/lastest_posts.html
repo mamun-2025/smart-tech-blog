@@ -1,0 +1,16 @@
+
+<div class="card mb-4 shadow-sm">
+    <div class="card-header bg-dark text-white font-weight-bold">
+        Recent Posts
+    </div>
+    <ul class="list-group list-group-flush">
+        {% for post in latest_posts %}
+            <li class="list-group-item">
+                <a href="{{ post.get_absolute_url }}" class="text-decoration-none text-dark">
+                    {{ post.title }}
+                    <br><small class="text-muted">{{ post.publish|date:"M d, Y" }}</small>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>

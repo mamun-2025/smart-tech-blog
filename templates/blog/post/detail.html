@@ -1,0 +1,100 @@
+
+{% extends "base.html" %}
+{% load markdownify %}
+
+{% block title %} {{ post.title }} {% endblock %}
+
+{% block content %}
+   <h1>{{ post.title }}</h1>
+   <p class="date">
+      Published {{ post.publish }} by {{ post.author }}
+   </p>
+   {% if post.image %}
+      <img src="{{ post.image.url }}" alt="{{ post.title }}" style="width:100%; height:auto;">
+   {% endif %}
+
+   <div class="body">
+      {{ post.body|markdownify }}
+   </div>
+
+   <div class="share-buttons mt-5 p-3 border-top border-bottom">
+      <h5 class="mb-3 text-muted">এই পোস্টটি শেয়ার করুন:</h5>
+      
+      <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" 
+         target="_blank" class="btn btn-primary btn-sm me-2 rounded-pill">
+         <i class="fab fa-facebook-f"></i> Facebook
+      </a>
+
+      <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}&text={{ post.title }}" 
+         target="_blank" class="btn btn-dark btn-sm me-2 rounded-pill">
+         <i class="fab fa-twitter"></i> Twitter
+      </a>
+
+      <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}&title={{ post.title }}" 
+         target="_blank" class="btn btn-info btn-sm text-white rounded-pill">
+         <i class="fab fa-linkedin-in"></i> LinkedIn
+      </a>
+   </div>
+   
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+   
+   <hr class="my-5">
+   
+   <div class="comments-section mt-4">
+      <h3 class="mb-4">Comments ({{ post.comments.count }})</h3>
+      
+      {% for comment in post.comments.all %}
+         <div class="card mb-2 border-0 shadow-sm bg-white">
+            <div class="card-body">
+               <div class="d-flex justify-content-between">
+                  <h6 class="fw-bold text-primary">{{ comment.name }}</h6>
+                  <small class="text-muted">{{ comment.created|date:"M d, Y" }}</small>
+               </div>
+               <p class="mb-0 mt-2">{{ comment.body }}</p>
+            </div>
+         </div>
+      {% empty %}
+         <div class="alert alert-light">No comments yet. Be the first to share your thoughts!</div>
+      {% endfor %}
+
+      <div class="card mt-5 shadow-sm">
+         <div class="card-header bg-success text-white">
+            <h5 class="mb-0">Add a new comment</h5>
+         </div>
+         <div class="card-body">
+            <form method="post">
+               {% csrf_token %}
+               
+               <div class="mb-3">
+                   {{ form.as_p }}
+               </div>
+               
+               <button type="submit" class="btn btn-success px-4">Submit Comment</button>
+            </form>
+         </div>
+      </div>
+   </div>
+{% endblock %}
+
+
+{% comment %} 📖 এই ডিজাইনে কী কী যোগ করা হয়েছে? (ব্যাখ্যা)
+post.comments.count: এটি ব্যবহার করে আমরা ব্র্যাকেটে দেখাচ্ছি ওই পোস্টে মোট কয়টি কমেন্ট আছে।
+
+img-fluid rounded: বুটস্ট্র্যাপের এই ক্লাসগুলো ইমেজকে মোবাইল ফ্রেন্ডলি করে এবং কোনাগুলো কিছুটা রাউন্ড করে দেয়।
+{{ comment.created|date:"M d, Y" }}: কমেন্ট কোন তারিখে করা হয়েছে তা সুন্দর ফরম্যাটে দেখানোর জন্য এটি ব্যবহার করা হয়েছে।
+{% empty %}: যদি কোনো কমেন্ট না থাকে, তবে একটি হালকা মেসেজ (Alert) দেখাবে।
+Shadow-sm: কমেন্ট বক্সগুলোকে দেখতে হালকা থ্রি-ডি (3D) লুক দিতে হালকা শ্যাডো ব্যবহার করা হয়েছে।
+
+💼 ইন্টারভিউ প্রশ্নোত্তর (Q&A)
+প্রশ্ন ১: টেমপ্লেটে post.comments.all কীভাবে কাজ করে?
+উত্তর: মডেলে দেওয়া related_name='comments' এর মাধ্যমে আমরা পোস্ট অবজেক্ট থেকে সরাসরি তার সাথে যুক্ত সব কমেন্ট অবজেক্টকে একবারে অ্যাক্সেস করতে পারি। 
+এটি জ্যাঙ্গো ওআরএম-এর একটি শক্তিশালী ফিচার।
+
+প্রশ্ন ২: {{ form.as_p }} এর পরিবর্তে আমরা আর কী ব্যবহার করতে পারতাম?
+উত্তর: আমরা {{ form.as_table }} (টেবিল ফরম্যাট) বা {{ form.as_ul }} (লিস্ট ফরম্যাট) ব্যবহার করতে পারতাম। 
+তবে প্রফেশনাল কাজে প্রতিটি ফিল্ডকে আলাদাভাবে বুটস্ট্র্যাপের form-control ক্লাসের মাধ্যমে ডিজাইন করা হয়।
+
+প্রশ্ন ৩: ডিটেইল পেজে কমেন্ট ফর্ম হ্যান্ডেল করতে ভিউতে কী পরিবর্তন লাগে?
+উত্তর: আমরা DetailView-এর সাথে FormMixin ব্যবহার করি এবং post() 
+মেথডটি হ্যান্ডেল করি যাতে একই পেজে পোস্টও দেখা যায় 
+আবার ফর্মও সাবমিট করা যায়। {% endcomment %}
