@@ -4,5 +4,3 @@ media/
 venv
 __pycache__/
 *.sqlite3
-command.txt
-authentication.txt

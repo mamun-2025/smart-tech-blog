@@ -154,8 +154,3 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 LOGIN_REDIRECT_URL = 'blog:post_list'
 LOGOUT_REDIRECT_URL = 'blog:post_list'
-# আপনি যদি settings.py এ LOGIN_REDIRECT_URL না লিখেন তবে কী হবে?
-# উত্তর: জ্যাঙ্গো ডিফল্টভাবে ইউজারকে /accounts/profile/ ইউআরএল-এ পাঠানোর চেষ্টা করবে। 
-# আপনার যদি ওই নামে কোনো ইউআরএল তৈরি করা না থাকে, তবে ইউজার লগইন করার পর 404 Error দেখাবে। 
-# তাই এটি সেট করা অত্যন্ত জরুরি।
-
