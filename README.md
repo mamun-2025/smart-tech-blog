@@ -18,7 +18,7 @@ For production deployment (Render/Railway), the project uses **WhiteNoise** to s
 This project has been migrated from SQLite to **PostgreSQL** for better scalability. 
 
 To connect your local PostgreSQL:
-1. Create a database named `smart_tech_db`.
+1. Create a database named `smart_tech_blog_db`.
 2. Update your `.env` file or `settings.py` with your PostgreSQL `USER` and `PASSWORD`.
 3. Run `python manage.py migrate` to sync the schema.
 
