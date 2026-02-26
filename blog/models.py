@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 from django.urls import reverse
 import math
+from cloudinary.models import CloudinaryField
 
 class Category(models.Model):
    name = models.CharField(max_length=50)
@@ -21,7 +22,7 @@ class Post(models.Model):
    slug = models.SlugField(max_length=250, unique_for_date='publish')
    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='blog_posts')
    body = models.TextField()
-   image = models.ImageField(upload_to='blog/%Y/%m/%d/', blank=True)
+   image = CloudinaryField('image', folder='blog_images')
    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, related_name='posts')
 
    publish = models.DateTimeField(default=timezone.now)
