@@ -5,6 +5,7 @@ from django.utils import timezone
 from django.urls import reverse
 import math
 from cloudinary.models import CloudinaryField
+from django.utils.text import slugify
 
 class Category(models.Model):
    name = models.CharField(max_length=50)
@@ -47,6 +48,12 @@ class Post(models.Model):
    def get_read_time(self):
       word_count = len(self.body.split())
       return math.ceil(word_count / 200) 
+   
+   def save(self, *args, **kwargs):
+    if not self.slug:
+        self.slug = slugify(self.title)
+    super().save(*args, **kwargs)
+    
    
 class Comment(models.Model):
    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')

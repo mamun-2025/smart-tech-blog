@@ -32,17 +32,26 @@
                         <a class="nav-link" href="{% url 'blog:contact' %}">Contact Me</a>
                     </li>
 
+                   
                     {% if user.is_authenticated %}
-                        <li class=nav-item>
+                        <li class="nav-item">
                             <span class="nav-link text-warning fw-bold"> Hi, {{ user.username }} </span>
                         </li>
+                        
+                        <li class="nav-item">
+                            <a class="btn btn-sm btn-light text-success fw-bold ms-2" href="{% url 'blog:post_create' %}">
+                                <i class="fas fa-plus-circle"></i> Create Post
+                            </a>
+                        </li>
+
                         <li class="nav-item">
                             <a class="nav-link text-white fw-bold" href="{% url 'accounts:profile' %}">
-                            <img src="{{ user.profile.profile_pic.url }}" class="rounded-circle" style="width: 30px; height: 30px; object-fit: cover;">
-                                     My Profile
-                             </a>
+                                <img src="{{ user.profile.profile_pic.url }}" class="rounded-circle" style="width: 30px; height: 30px; object-fit: cover;">
+                                My Profile
+                            </a>
                         </li>
-                        
+                        ...
+                    
                         <li class="nav-item">
                             <form action="{% url 'logout' %}" method="post" class="d-inline">
                                 {% csrf_token %}
@@ -50,12 +59,12 @@
                             </form>
                         </li>
                     {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'login' %}">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-sm btn-outline-light text-success fw-bold ms-lg-2" href="{% url 'accounts:signup' %}">Sign Up</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-sm btn-outline-light text-success fw-bold ms-lg-2" href="{% url 'accounts:signup' %}">Sign Up</a>
+                        </li>
                     {% endif %}
                 </ul>
             </div>
