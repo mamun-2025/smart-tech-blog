@@ -11,6 +11,7 @@ urlpatterns = [
     path('<int:year>/<int:month>/<int:day>/<slug:slug>/', views.PostDetailView.as_view(), name='post_detail'),
     path('about/', views.AboutPageView.as_view(), name='about'),
     path('contact/', views.ContactPageView.as_view(), name='contact'),
+    path('post/new/', views.PostCreateView.as_view(), name='post_create'),
 ]
 
 

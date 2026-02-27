@@ -3,8 +3,9 @@
 from django.views.generic import ListView, DetailView, TemplateView
 from .models import Post, Category, Comment
 from django.db.models import Q
-from .forms import CommentForm 
-from django.views.generic.edit import FormMixin
+from .forms import CommentForm, PostForm
+from django.views.generic.edit import CreateView, FormMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 
@@ -95,5 +96,19 @@ class ContactPageView(TemplateView):
    template_name = 'blog/post/contact.html'
 
 
+class PostCreateView(LoginRequiredMixin, CreateView):
+   model = Post
+   form_class = PostForm
+   template_name = 'blog/post/post_form.html'
+
+   def get_success_url(self):
+      return '/'
+   
+   def form_valid(self, form):
+      form.instance.author = self.request.user
+
+      form.instance.status = 'published'
+      return super().form_valid(form)
+   
 
    
