@@ -9,6 +9,8 @@ load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# SECURITY WARNING: Secret key এনভায়রনমেন্ট থেকে আসবে, না থাকলে নিচেরটি কাজ করবে
+SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-your-default-key-here')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
@@ -21,7 +23,7 @@ DATABASES = {
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = ['smart-tech-blog.onrender.com', 'localhost', '127.0.0.1']
 
@@ -37,8 +39,8 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'blog',
-    'cloudinary',
     'accounts',
+    'cloudinary',
     'markdownify.apps.MarkdownifyConfig',
 ]
 
@@ -148,3 +150,5 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 LOGIN_REDIRECT_URL = 'blog:post_list'
 LOGOUT_REDIRECT_URL = 'blog:post_list'
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
