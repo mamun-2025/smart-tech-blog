@@ -2,6 +2,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post
 from .forms import PostForm 
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login
+from .forms import SignupForm
 
 
 # Post List View
@@ -56,7 +58,7 @@ def post_update(request, slug):
 
 # Post Delete View
 @login_required
-def post_delete(requestm, slug):
+def post_delete(request, slug):
 
    post = get_object_or_404(Post, slug=slug)
 
@@ -69,7 +71,25 @@ def post_delete(requestm, slug):
    return render(request, 'blog/post_confirm_delete.html', {'post': post})
 
    
+# User Signup View
+def signup_view(request):
 
+   if request.method == 'POST':
+
+      form = SignupForm(request.POST)
+
+      if form.is_valid():
+
+         user = form.save()
+         login(request, user)
+         return redirect('post_list')
+
+      else:
+
+         form = SignupForm()
+
+      return render(request, 'registration/singup.html', {'form': form})
+   
 
 
 

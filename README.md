@@ -81,8 +81,12 @@ blog-project/
 │   ├── admin.py
 │   └── apps.py
 │
-├── templates/                  # Global templates
-│   └── base.html
+├── templates/                # Global templates
+│   ├── base.html
+│   │
+│   └── registration/
+│        ├── login.html
+│        └── signup.html
 │
 ├── static/
 │   ├── css/
@@ -176,16 +180,16 @@ Implemented Features:
 - Delete Post
 
 Status: ✅ Completed
-```
 
 # ⏳ Step 4: Authentication System
-Planned Features:
+Implemented Features:
 
 - User Signup
 - User Login
 - User Logout
 
-Status: ⏳ In Progress
+Status: ✅ Completed
+```
 
 # ⏳ Step 5: Responsive UI Improvement
 Planned Features:
@@ -193,7 +197,7 @@ Planned Features:
 - Tailwing CSS Integration
 - Responsive Blog Layout
 
-Status: ⏳ Planned
+Status: ⏳ In Progress
 
 # ⏳ Step 6: Comment System
 Planned Features:
