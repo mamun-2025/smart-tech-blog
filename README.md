@@ -132,6 +132,8 @@ Implemented Features:
 - Like/Reaction Model
 - Post Status(Draft/Published)
 - Created & Updated Timestamp
+- Superuser Creation
+- Admin_Panel Setup
 
 Status: ✅ Completed
 ```
