@@ -57,22 +57,50 @@ The goal of this project is to learn and implement:
 ``` text
 blog-project/
 │
-├── core/ <-- Django project configuration
+├── core/                       # Django project configuration
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── urls.py
+│   ├── asgi.py
+│   └── wsgi.py
 │
-├── blog/ <-- Blog application
-│ ├── migrations/
-│ ├── models.py
-│ ├── views.py
-│ ├── forms.py
-│ ├── serializers.py
-│ ├── urls.py
-│ ├── templates/
-│ └── static/
+├── blog/                       # Blog application
+│   ├── migrations/
+│   │
+│   ├── templates/
+│   │   └── blog/
+│   │       ├── post_list.html
+│   │       ├── post_detail.html
+│   │       └── post_form.html
+│   │
+│   ├── models.py
+│   ├── views.py
+│   ├── forms.py
+│   ├── serializers.py
+│   ├── urls.py
+│   ├── admin.py
+│   └── apps.py
 │
-├── .env
+├── templates/                  # Global templates
+│   └── base.html
+│
+├── static/
+│   ├── css/
+│   │   └── output.css          # Tailwind compiled CSS
+│   │
+│   └── images/
+│
+├── theme/                      # Tailwind source files
+│   └── static_src/
+│       └── src/
+│           └── input.css
+│
+├── tailwind.config.js
+├── package.json
+│
 ├── manage.py
-├── .gitignore
 ├── requirements.txt
+├── .gitignore
 └── README.md
 ```
 
@@ -140,7 +168,7 @@ Implemented Features:
 Status: ✅ Completed
 
 # ⏳ Step 3: Blog CRUD System 
-Planned Features:
+Implemented Features:
 
 - Create Post
 - View Post
