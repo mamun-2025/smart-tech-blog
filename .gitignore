@@ -5,4 +5,8 @@ __pychace__/
 venv/
 *.dv
 *.sqlite3
-*.txt
+
+
+Project_Setup.txt
+Blog_Models_Design.txt
+

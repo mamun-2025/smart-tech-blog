@@ -41,6 +41,7 @@ The goal of this project is to learn and implement:
 ### Frontend
 - HTML
 - TailwindCSS
+- JavaScript
 
 ### Tools
 - Git 
@@ -78,31 +79,28 @@ blog-project/
 # ⚙️ Environment Setup
 
 - Clone Repository:
-git clone https://github.com/mamun-2025/smart-tech-blog
-cd blog_app
+   git clone https://github.com/mamun-2025/smart-tech-blog
+   cd blog_app
 
 - Create Virtual Environment:
-python -m venv venv
+   python -m venv venv
 
 - Activate Virtual Environment:
-Windows: venv\Scripts\activate
+   Windows: venv\Scripts\activate
 
 - Install Dependencies:
-pip install -r requirements.txt
+   pip install -r requirements.txt
 
 - Run Migrations:
-python manage.py makemigrations
-python manage.py migrate
+   python manage.py makemigrations
+   python manage.py migrate
 
 - Run Server:
-python manage.py runserver
+   python manage.py runserver
 
 ---
 
 # 🎰 Development Progress
-
----
-
 # ✅ Step 1:  project Setup
 Completed:
 
@@ -123,10 +121,9 @@ python manage.py migrate
 python manage.py runserver
 
 Status: ✅ Completed
-```
 
-# ⏳ Step 2: Blog Model Design
-Planned Features:
+# ⏳ Step 2: Blog Model Design & Admin Panel
+Implemented Features:
 
 - Post Model
 - Category Model
@@ -136,9 +133,10 @@ Planned Features:
 - Post Status(Draft/Published)
 - Created & Updated Timestamp
 
-Status: ⏳ In Progress
+Status: ✅ Completed
+```
 
-# ⏳ Step 3: Blog CRUD System & Admin Panel
+# ⏳ Step 3: Blog CRUD System 
 Planned Features:
 
 - Create Post
@@ -146,7 +144,7 @@ Planned Features:
 - Update Post
 - Delete Post
 
-Status: ⏳ Planned
+Status: ⏳ In Progress
 
 # ⏳ Step 4: Authentication System
 Planned Features:
@@ -229,8 +227,8 @@ Status: ⏳ Planned
 ---
 
 # 👨‍💻 Author
-Mamun Bepari
-Aspiring Backend Developer (Python & Django)
+- Mamun Bepari
+- Aspiring Backend Developer (Python & Django)
 
 GitHub:
 https://github.com/mamun-2025
