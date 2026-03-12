@@ -15,14 +15,16 @@ The goal of this project is to learn and implement:
 - Django Backend Development
 - Blog CRUD Operations
 - Authentication System
+- Responsive UI
 - Comment System
 - Like/Reaction System
-- Responsive UI
+- Search + Pagination
 - PostgreSQL Database Integration
 - Django REST Framework APIs
 - JWT Authentication
-- Deployment
 - Advanced API Features (Pagination, Search, Filter)
+- Deployment
+
 
 --- 
 
@@ -133,10 +135,9 @@ Implemented Features:
 - Post Status(Draft/Published)
 - Created & Updated Timestamp
 - Superuser Creation
-- Admin_Panel Setup
+- Admin_Panel Setup 
 
 Status: ✅ Completed
-```
 
 # ⏳ Step 3: Blog CRUD System 
 Planned Features:
@@ -146,7 +147,8 @@ Planned Features:
 - Update Post
 - Delete Post
 
-Status: ⏳ In Progress
+Status: ✅ Completed
+```
 
 # ⏳ Step 4: Authentication System
 Planned Features:
@@ -155,18 +157,27 @@ Planned Features:
 - User Login
 - User Logout
 
+Status: ⏳ In Progress
+
+# ⏳ Step 5: Responsive UI Improvement
+Planned Features:
+
+- Tailwing CSS Integration
+- Responsive Blog Layout
+
 Status: ⏳ Planned
 
-# ⏳ Step 5: Comment System
+# ⏳ Step 6: Comment System
 Planned Features:
 
 - Add Comment
 - Delete Comment
 - Comment List
+- User-based permission
 
 Status: ⏳ Planned
 
-# ⏳ Step 6: Like/Reaction System
+# ⏳ Step 7: Like/Reaction System
 Planned Features:
 
 - Like Post 
@@ -175,13 +186,12 @@ Planned Features:
 
 Status: ⏳ Planned
 
-# ⏳ Step 7: UI Improvement
+# Step 8: Search + Pagination
 Planned Features:
 
-- Tailwing CSS Integration
-- Responsive Blog Layout
-
-Status: ⏳ Planned
+- Blog search byt title/content
+- Pagination in post list
+- Filter posts by category/tag
 
 # ⏳ Step 8: Database Upgrade
 Planned Features:
@@ -191,40 +201,28 @@ Planned Features:
 
 Status: ⏳ Planned
 
-# ⏳ Step 9: REST API Development 
+# ⏳ Step 9: DRF API + JWT Authentication
 Planned Features:
 
 - Blog Post API
 - Comment API
-- API Authentication
-
-Status: ⏳ Planned
-
-# ⏳ Step 10: JWT Authentication
-Planned Features:
-
-- Acceess Token
-- Refresh Token
-- Secure API Endpoints
-
-Status: ⏳ Planned
-
-# ⏳ Step 11: Deployment 
-Planned Platform:
-
-- Render
-- PostgreSQL Database
-
-Status: ⏳ Planned
-
-# ⏳ Step 12: Advanced API Features
-Planned Features:
-
-- Pagination
+- Like API
 - Search API
 - Filter API
+- JWT secure token authentication
 
-Status: ⏳ Planned 
+Status: ⏳ Planned
+
+# ⏳ Step 10: Deployment (Render)
+Planned Platform:
+
+- GitHub repo push
+- Environment variables config
+- Neon PostgreSQL DB
+- Render Hosting
+
+Status: ⏳ Planned
+
 
 ---
 

@@ -3,10 +3,11 @@ __pychace__/
 *.pyc
 *.pyo
 venv/
-*.dv
+*.db
 *.sqlite3
 
 
-Project_Setup.txt
-Blog_Models_Design.txt
+superuser.txt
+
+
 
