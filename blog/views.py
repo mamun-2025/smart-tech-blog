@@ -1,15 +1,51 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post, Comment, Like
+from .models import Post, Comment, Like, Tag
 from .forms import PostForm 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
 from .forms import SignupForm, CommentForm
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.db.models import Q
 
 
 # Post List View
 def post_list(request):
-   posts = Post.objects.filter(status='published')
-   return render(request, 'blog/post_list.html', {'posts': posts})
+   query = request.GET.get('q') # Search query
+   category = request.GET.get('category') # Filter by category
+   tag = request.GET.get('tag') # Filter by tag
+
+   posts_list = Post.objects.filter(status='published').order_by('-created_at')
+
+   # Search by title or content
+   if query:
+      posts_list = posts_list.filter(Q(title__icontains=query) | Q(content__icontains=query))
+
+   # Filter by category
+   if category:
+      posts_list = posts_list.filter(category__slug=category)
+
+   # Filter by tag
+   if tag:
+      posts_list = posts_list.filter(tags__slug=tag)
+
+   # Pagination
+   paginator = Paginator(posts_list, 5)
+   page = request.GET.get('page')
+
+   try:
+      posts = paginator.page(page)
+   except PageNotAnInteger:
+      posts = paginator.page(1)
+   except EmptyPage:
+      posts = paginator.page(paginator.num_pages)
+
+   context = {
+      'posts': posts,
+      'query': query,
+      'tag': tag,
+   }
+
+   return render(request, 'blog/post_list.html', context)
 
 
 # Post Detail View

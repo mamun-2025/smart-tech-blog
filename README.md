@@ -211,16 +211,16 @@ Implemented Features:
 - Like count
 
 Status: ✅ Completed
-```
 
 # Step 8: Search + Pagination
-Planned Features:
+Implemented Features:
 
 - Blog search byt title/content
 - Pagination in post list
 - Filter posts by category/tag
 
-Status: ⏳ In Progress
+Status: ✅ Completed
+```
 
 # ⏳ Step 8: Database Upgrade
 Planned Features:
@@ -228,7 +228,7 @@ Planned Features:
 - PostgrSQL Integration
 - Environment Variables (.env)
 
-Status: ⏳ Planned
+Status: ⏳ In Progress
 
 # ⏳ Step 9: DRF API + JWT Authentication
 Planned Features:
