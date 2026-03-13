@@ -71,7 +71,8 @@ blog-project/
 │   │   └── blog/
 │   │       ├── post_list.html
 │   │       ├── post_detail.html
-│   │       └── post_form.html
+│   │       ├── post_form.html
+│   │       └── post_confirm_delete.html
 │   │
 │   ├── models.py
 │   ├── views.py
@@ -91,13 +92,7 @@ blog-project/
 ├── static/
 │   ├── css/
 │   │   └── output.css          # Tailwind compiled CSS
-│   │
-│   └── images/
-│
-├── theme/                      # Tailwind source files
-│   └── static_src/
-│       └── src/
-│           └── input.css
+│       └── input.css           # Tailwind source files        
 │
 ├── tailwind.config.js
 ├── package.json
@@ -189,15 +184,15 @@ Implemented Features:
 - User Logout
 
 Status: ✅ Completed
-```
 
 # ⏳ Step 5: Responsive UI Improvement
-Planned Features:
+Implemented Features:
 
 - Tailwing CSS Integration
 - Responsive Blog Layout
 
-Status: ⏳ In Progress
+Status: ✅ Completed
+```
 
 # ⏳ Step 6: Comment System
 Planned Features:
@@ -207,7 +202,7 @@ Planned Features:
 - Comment List
 - User-based permission
 
-Status: ⏳ Planned
+Status: ⏳ In Progress
 
 # ⏳ Step 7: Like/Reaction System
 Planned Features:

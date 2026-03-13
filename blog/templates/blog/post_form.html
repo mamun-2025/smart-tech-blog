@@ -1,1 +1,16 @@
+{% extends "base.html" %}
 
+{% block content %}
+<div class="max-w-xl mx-auto bg-gray-400 p-8 shadow-lg rounded-lg">
+    <h2 class="text-2xl font-bold mb-6">Create a New Post</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="space-y-4">
+            {{ form.as_p }}
+        </div>
+        <button type="submit" class="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-200">
+            Publish Post
+        </button>
+    </form>
+</div>
+{% endblock %}

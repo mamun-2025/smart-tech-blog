@@ -1,2 +1,24 @@
 
 
+{% extends "base.html" %}
+
+{% block content %}
+<div class="max-w-md mx-auto bg-white p-8 shadow-lg rounded-lg border border-red-100">
+   <h2 class="text-2xl font-bold mb-6 text-center text-red-600"> Delete Post?</h2>
+
+   <p class="text-gray-600 text-center mb-6">
+      Are you sure you want to delete <strong>"{{ post.title }}"</strong>? This action cannot be undone.
+   </p>
+
+   <form method="POST" class="flex flex-col space-y-3">
+      {% csrf_token %}
+      <button type="submit" class="bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 rounded transition">
+         Yes, Delete
+      </button>
+
+      <a href="{% url 'post_detail' post.slug %}" class="bg-gray-500 hover:bg-green-500 text-center text-gray-800 py-2 px-4 rounded transition">
+         Don't delete.Please go back.⬅️
+      </a>
+   </form>
+</div>
+{% endblock %}

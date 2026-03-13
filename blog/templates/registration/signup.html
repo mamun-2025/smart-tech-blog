@@ -1,1 +1,45 @@
 
+{% block content %}
+<div class="max-w-md mx-auto bg-white p-8 shadow-lg rounded-lg border border-gray-100">
+    <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Create Account</h2>
+    
+    <form method="POST">
+        {% csrf_token %}
+        
+        <div class="space-y-4 signup-form">
+            {{ form.as_p }}
+        </div>
+
+        <button type="submit" class="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded transition duration-200">
+            Sign Up
+        </button>
+    </form>
+
+    <p class="mt-4 text-center text-sm text-gray-600">
+        Already have an account? 
+        <a href="/login/" class="text-blue-500 hover:underline">Login here</a>
+    </p>
+</div>
+<style>
+    .signup-form p { margin-bottom: 1rem; }
+    .signup-form input {
+        width: 100%;
+        padding: 8px 12px;
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+        margin-top: 4px;
+    }
+    .signup-form input:focus {
+        outline: none;
+        border-color: #2563eb;
+        ring: 2px;
+        ring-color: #3b82f6;
+    }
+    .signup-form .helptext {
+        font-size: 0.75rem;
+        color: #6b7280;
+        display: block;
+        margin-top: 4px;
+    }
+</style>
+{% endblock %}

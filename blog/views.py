@@ -84,12 +84,12 @@ def signup_view(request):
          login(request, user)
          return redirect('post_list')
 
-      else:
+   else:
 
-         form = SignupForm()
+      form = SignupForm()
 
-      return render(request, 'registration/singup.html', {'form': form})
-   
+   return render(request, 'registration/signup.html', {'form': form})
+
 
 
 
