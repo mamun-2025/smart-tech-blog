@@ -202,16 +202,16 @@ Implemented Features:
 - User-based permission
 
 Status: ✅ Completed
-```
 
 # ⏳ Step 7: Like/Reaction System
-Planned Features:
+Implemented Features:
 
 - Like Post 
 - Unlike Post
 - Like count
 
-Status: ⏳ In Progress
+Status: ✅ Completed
+```
 
 # Step 8: Search + Pagination
 Planned Features:
@@ -219,6 +219,8 @@ Planned Features:
 - Blog search byt title/content
 - Pagination in post list
 - Filter posts by category/tag
+
+Status: ⏳ In Progress
 
 # ⏳ Step 8: Database Upgrade
 Planned Features:

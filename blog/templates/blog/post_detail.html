@@ -14,18 +14,44 @@
       {{ post.content|linebreaks }}
    </div>
 
-   <div class="mt-8">
-      <a href="/" class="text-blue-500 hover:underline">← Back to Home</a>
+   <hr class="my-4">
+
+   <div class="flex items-center mt-4">
+      <form method="POST" action="{% url 'toggle_like' post.slug %}">
+         {% csrf_token %}
+         {% if user.is_authenticated %}
+            {% if post.likes.all %}
+               {% if user in post.likes.all %} <button type="submit"class="text-red-500 font-bold">🩶 Unlike </button>           
+               {% else %}
+                  <button type="submit" class="text-gray-500 font-bold">❤️ Like </button>
+               {% endif %}
+            {% else %}
+                <button type="submit" class="text-gray-500 font-bold">❤️ Like </button>
+            {% endif %}
+         {% else %}
+            <p class="texts-sm text-gray-400">Login to like this post.</p>
+         {% endif %}
+      </form>
+
+      <p class="ml-4 text-gray-600">
+         {{ post.likes.count }} Like {{ post.likes.count|pluralize:"like,likes" }}
+      </p>
    </div>
 
    {% if user == post.author %}
-   <div class="mt-4 flex space-x-4 border-t pt-4">
+   <div class="mt-4 space-x-10 underline">
          <a href="{% url 'post_update' post.slug %}" class="text-blue-600">Edit Post</a>
          <a href="{% url 'post_delete' post.slug %}" class="text-red-600">Delete Post</a>
    </div>
    {% endif %}
+
+   <div class="mt-8">
+      <a href="/" class="text-blue-500 hover:underline">← Back to Home</a>
+   </div>
    
-   
+   <hr class="my-6">
+
+ 
    {% for comment in post.comments.all %}
    <div class="border-b border-gray-200 py-4 flex justify-between items-start">
       <div>
@@ -69,5 +95,9 @@
       </div>
       {% endif %}
    </div>
+
+
+ 
+
 </div>
 {% endblock %}

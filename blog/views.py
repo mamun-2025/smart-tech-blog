@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post, Comment
+from .models import Post, Comment, Like
 from .forms import PostForm 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
@@ -126,6 +126,19 @@ def delete_comment(request, comment_id):
       return redirect('post_detail', slug=post_slug)
 
    return redirect('post_detail')
+
+
+# User Likes View
+@login_required
+def toggle_like(request, slug):
+   post = get_object_or_404(Post, slug=slug) 
+   like, created = Like.objects.get_or_create(post=post, author=request.user)
+
+   if not created:
+      like.delete()
+
+   return redirect('post_detail', slug=slug) 
+
 
 
 
