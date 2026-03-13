@@ -1,0 +1,27 @@
+{
+  "name": "blog_app",
+  "version": "1.0.0",
+  "description": "A modern Blog Web Application built with Django.\r Users can create blog posts, comment on posts, like posts, and manage their content.",
+  "main": "index.js",
+  "scripts": {
+    "dev" : "tailwindcss -i ./blog/static/css/input.css -o ./blog/static/css/output.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mamun-2025/smart-tech-blog.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/mamun-2025/smart-tech-blog/issues"
+  },
+  "homepage": "https://github.com/mamun-2025/smart-tech-blog#readme",
+  "devDependencies": {
+    "tailwindcss": "^4.2.1"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.2.1"
+  }
+}
