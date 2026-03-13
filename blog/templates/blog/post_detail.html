@@ -25,8 +25,49 @@
    </div>
    {% endif %}
    
-
-
    
+   {% for comment in post.comments.all %}
+   <div class="border-b border-gray-200 py-4 flex justify-between items-start">
+      <div>
+         <p class="text-sm text-gray-500 mb-1">
+            <spna class="font-bold text-gray-500">{{ comment.author.username }}</span>
+               {{ comment.created_at|timesince }} ago
+         </p>
+         <p class="text-gray-700">{{ comment.content }}</p>
+      </div>
+
+      {% if user == comment.author %}
+      <form method="POST" action="{% url 'delete_comment' comment.id %}">
+         {% csrf_token %}
+         <button type="submit" class="text-red-500 hover:text-red-700 text-sm font-medium transition">
+            Delete
+         </button>
+      </form>
+      {% endif %}
+   </div>
+   {% empty %}
+   <p class="text-gray-400 italic">No comments yet. Be the first to comment!</p>
+   {% endfor %}
+
+   <div class="mt-8">
+      {% if user.is_authenticated %}
+      <h4 class="font-semibold mb-2">Leave a Reply</h4>
+      <form method="POST" action="{% url 'add_comment' post.slug %}" class="space-y-3">
+         {% csrf_token %}
+
+         <div class="comment-input-wrapper">
+            {{ form.as_p }}
+         </div>
+
+         <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-2 rounded-lg shadow transition">
+            Post Comment 
+         </button>
+      </form>
+      {% else %}
+      <div class="bg-blue-50 p-4 rounded text-center">
+         <p class="text-gray-700">You must <a href="{% url 'login' %}" class="text-blue-600 font-bold hover:underline">login</a> to join the conversation.</p>
+      </div>
+      {% endif %}
+   </div>
 </div>
 {% endblock %}

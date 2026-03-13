@@ -192,17 +192,17 @@ Implemented Features:
 - Responsive Blog Layout
 
 Status: ✅ Completed
-```
 
 # ⏳ Step 6: Comment System
-Planned Features:
+Implemented Features:
 
 - Add Comment
 - Delete Comment
 - Comment List
 - User-based permission
 
-Status: ⏳ In Progress
+Status: ✅ Completed
+```
 
 # ⏳ Step 7: Like/Reaction System
 Planned Features:
@@ -211,7 +211,7 @@ Planned Features:
 - Unlike Post
 - Like count
 
-Status: ⏳ Planned
+Status: ⏳ In Progress
 
 # Step 8: Search + Pagination
 Planned Features:

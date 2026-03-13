@@ -1,9 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post
+from .models import Post, Comment
 from .forms import PostForm 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
-from .forms import SignupForm
+from .forms import SignupForm, CommentForm
 
 
 # Post List View
@@ -15,7 +15,14 @@ def post_list(request):
 # Post Detail View
 def post_detail(request, slug):
    post = get_object_or_404(Post, slug=slug, status='published')
-   return render(request, 'blog/post_detail.html', {'post': post})
+   form = CommentForm()
+   comments = post.comments.all()
+   context = {
+      'post': post,
+      'comments': comments,
+      'form': form,
+   }
+   return render(request, 'blog/post_detail.html', context)
 
 
 # Post Create View
@@ -89,6 +96,39 @@ def signup_view(request):
       form = SignupForm()
 
    return render(request, 'registration/signup.html', {'form': form})
+
+
+# User Comment View
+@login_required
+def add_comment(request, slug):
+   post = get_object_or_404(Post, slug=slug)
+
+   if request.method == "POST":
+      form = CommentForm(request.POST)
+      if form.is_valid():
+         comment = form.save(commit=False)
+         comment.author = request.user 
+         comment.post = post 
+         comment.save()
+         return redirect('post_detail', slug=post.slug)
+   
+   return redirect('post_detail', slug=post.slug)
+
+
+# User Comment Delete View
+@login_required
+def delete_comment(request, comment_id):
+   comment = get_object_or_404(Comment, id=comment_id)
+
+   if request.user == comment.author:
+      post_slug = comment.post.slug 
+      comment.delete()
+      return redirect('post_detail', slug=post_slug)
+
+   return redirect('post_detail')
+
+
+
 
 
 
