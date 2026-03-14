@@ -1,19 +1,19 @@
 
-
+import os 
 from pathlib import Path
+from dotenv import load_dotenv 
+
+load_dotenv() 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-6t79udq6(q)mv=vzoi@*h=1zm%nadm%#+!^7klfzt)gg^!lyg&'
+SECRET_KEY = os.getenv('SECRET_KEY') 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = []
 
@@ -63,11 +63,24 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
+# SQlite3 is used here for simplicity, but you can switch to PostgreSQL in production
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+# For production, user PostgreSQL and set the following enviromnent variables
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+   'default': {
+      'ENGINE': 'django.db.backends.postgresql',
+      'NAME': os.getenv('DB_NAME'),
+      'USER': os.getenv('DB_USER'),
+      'PASSWORD': os.getenv('DB_PASSWORD'),
+      'HOST': os.getenv('DB_HOST'),
+      'PORT': os.getenv('DB_PORT'),
+   }
 }
 
 

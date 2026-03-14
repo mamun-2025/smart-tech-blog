@@ -97,6 +97,7 @@ blog-project/
 ├── tailwind.config.js
 ├── package.json
 │
+├── .env
 ├── manage.py
 ├── requirements.txt
 ├── .gitignore
@@ -220,7 +221,6 @@ Implemented Features:
 - Filter posts by category/tag
 
 Status: ✅ Completed
-```
 
 # ⏳ Step 8: Database Upgrade
 Planned Features:
@@ -228,7 +228,8 @@ Planned Features:
 - PostgrSQL Integration
 - Environment Variables (.env)
 
-Status: ⏳ In Progress
+Status: ✅ Completed
+```
 
 # ⏳ Step 9: DRF API + JWT Authentication
 Planned Features:
@@ -240,7 +241,7 @@ Planned Features:
 - Filter API
 - JWT secure token authentication
 
-Status: ⏳ Planned
+Status: ⏳ In Progress
 
 # ⏳ Step 10: Deployment (Render)
 Planned Platform:
