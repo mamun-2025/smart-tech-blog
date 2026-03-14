@@ -244,6 +244,7 @@ Planned Features:
 - Search API
 - Filter API
 - JWT secure token authentication
+- API testing with POSTMAN
 
 Status: ✅ Completed
 ```
