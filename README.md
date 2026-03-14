@@ -51,6 +51,9 @@ The goal of this project is to learn and implement:
 - Vs Code
 - Postman
 
+### Deployment
+- Render
+
 ---
 
 # 📂 Project Structure
@@ -74,6 +77,8 @@ blog-project/
 │   │       ├── post_form.html
 │   │       └── post_confirm_delete.html
 │   │
+│   ├── api_urls.py
+│   ├── api_views.py
 │   ├── models.py
 │   ├── views.py
 │   ├── forms.py
@@ -229,7 +234,6 @@ Planned Features:
 - Environment Variables (.env)
 
 Status: ✅ Completed
-```
 
 # ⏳ Step 9: DRF API + JWT Authentication
 Planned Features:
@@ -241,7 +245,8 @@ Planned Features:
 - Filter API
 - JWT secure token authentication
 
-Status: ⏳ In Progress
+Status: ✅ Completed
+```
 
 # ⏳ Step 10: Deployment (Render)
 Planned Platform:
@@ -251,8 +256,7 @@ Planned Platform:
 - Neon PostgreSQL DB
 - Render Hosting
 
-Status: ⏳ Planned
-
+Status: ⏳ In Progress
 
 ---
 
