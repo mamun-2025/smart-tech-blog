@@ -236,7 +236,7 @@ Planned Features:
 Status: ✅ Completed
 
 # ⏳ Step 9: DRF API + JWT Authentication
-Planned Features:
+Implemented Features:
 
 - Blog Post API
 - Comment API
@@ -247,18 +247,17 @@ Planned Features:
 - API testing with POSTMAN
 
 Status: ✅ Completed
-```
 
 # ⏳ Step 10: Deployment (Render)
-Planned Platform:
+Implemented Platform:
 
 - GitHub repo push
 - Environment variables config
 - Neon PostgreSQL DB
 - Render Hosting
 
-Status: ⏳ In Progress
-
+Status: ✅ Completed
+```
 ---
 
 # 👨‍💻 Author
