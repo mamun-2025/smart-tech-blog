@@ -55,10 +55,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-MIDDLEWARE = [
-   'whitenoise.middleware.WhiteNoiseMiddleware',
-]
-
 ROOT_URLCONF = 'core.urls'
 
 TEMPLATES = [
