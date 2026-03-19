@@ -260,6 +260,16 @@ Status: ✅ Completed
 ```
 ---
 
+## Screenshots
+
+![Screenshots Post](photo/post.png)
+
+---
+
+# 🌐 Live Demo (Blog App)
+👉 [Click Here to View Live Project](https://smart-tech-blog.onrender.com)
+
+
 # 👨‍💻 Author
 - Mamun Bepari
 - Aspiring Backend Developer (Python & Django)
